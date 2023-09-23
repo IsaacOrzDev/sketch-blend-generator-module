@@ -12,7 +12,7 @@ load_dotenv()
 
 class GeneratorService(generator_pb2_grpc.GeneratorServiceServicer):
     def Predict(self, request, context):
-        response = generator_pb2.PredictResponse()
+        response = generator_pb2.PredictReply()
         urls = []
         iterator = replicate.run(
             os.environ.get("REPLICATE_MODEL"),
@@ -29,7 +29,7 @@ def serve():
     generator_pb2_grpc.add_GeneratorServiceServicer_to_server(
         GeneratorService(), server=server
     )
-    server.add_insecure_port('[::]:{}'.format(os.environ.get("PORT")))
+    server.add_insecure_port('[::]:{}'.format(os.environ.get("PORT") or 5002))
     SERVICE_NAMES = (
         generator_pb2.DESCRIPTOR.services_by_name['GeneratorService'].full_name,
         reflection.SERVICE_NAME

@@ -17,7 +17,7 @@ class GeneratorServiceStub(object):
         self.Predict = channel.unary_unary(
                 '/generator.GeneratorService/Predict',
                 request_serializer=proto_dot_generator__pb2.PredictRequest.SerializeToString,
-                response_deserializer=proto_dot_generator__pb2.PredictResponse.FromString,
+                response_deserializer=proto_dot_generator__pb2.PredictReply.FromString,
                 )
 
 
@@ -36,7 +36,7 @@ def add_GeneratorServiceServicer_to_server(servicer, server):
             'Predict': grpc.unary_unary_rpc_method_handler(
                     servicer.Predict,
                     request_deserializer=proto_dot_generator__pb2.PredictRequest.FromString,
-                    response_serializer=proto_dot_generator__pb2.PredictResponse.SerializeToString,
+                    response_serializer=proto_dot_generator__pb2.PredictReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -61,6 +61,6 @@ class GeneratorService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/generator.GeneratorService/Predict',
             proto_dot_generator__pb2.PredictRequest.SerializeToString,
-            proto_dot_generator__pb2.PredictResponse.FromString,
+            proto_dot_generator__pb2.PredictReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

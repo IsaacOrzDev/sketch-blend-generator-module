@@ -4,7 +4,7 @@ package generator;
 
 service GeneratorService{
   
- rpc Predict(PredictRequest) returns (PredictResponse) {}
+ rpc Predict(PredictRequest) returns (PredictReply) {}
 
 }
 
@@ -12,6 +12,6 @@ message PredictRequest {
   string prompt = 1;
 }
 
-message PredictResponse{
+message PredictReply{
   repeated string urls = 1;
 }
