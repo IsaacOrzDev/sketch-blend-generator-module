@@ -15,12 +15,47 @@ class GeneratorService(generator_pb2_grpc.GeneratorServiceServicer):
         response = generator_pb2.PredictReply()
         urls = []
         iterator = replicate.run(
-            os.environ.get("REPLICATE_MODEL"),
-            input={"prompt": request.prompt}
+            os.environ.get("SCRIBBLE_MODEL"),
+            input={
+                "prompt": request.prompt, 
+                "structure": "scribble"
+            }
         )
         for image in iterator:
             urls.append(image)
         response.urls.extend(urls)
+        return response
+    
+    def ScribblePredict(self, request, context):
+        response = generator_pb2.ScribblePredictReply()
+
+        iterator = replicate.run(
+            os.environ.get("SCRIBBLE_MODEL"),
+            input={
+                "prompt": request.prompt, 
+                "image": request.imageUrl, 
+                "structure": "scribble"
+            }
+        )
+        url = None
+        for image in iterator:
+            url = image
+        response.url = url
+        return response
+    
+    def CaptionPredict(self, request, context):
+        response = generator_pb2.CaptionPredictReply()
+        iterator = replicate.run(
+            os.environ.get("BLIP_MODEL"),
+            input={
+                "image": request.imageUrl, 
+                "task": "image_captioning"
+            }
+        )
+        caption = ""
+        for item in iterator:
+            caption += item
+        response.caption = caption.replace("Caption: ", "")
         return response
 
 
