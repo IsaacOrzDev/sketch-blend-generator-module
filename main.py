@@ -18,7 +18,8 @@ class GeneratorService(generator_pb2_grpc.GeneratorServiceServicer):
             os.environ.get("SCRIBBLE_MODEL"),
             input={
                 "prompt": request.prompt, 
-                "structure": "scribble"
+                "structure": "scribble",
+                "n_prompt": os.environ.get("N_PROMPT")
             }
         )
         for image in iterator:
