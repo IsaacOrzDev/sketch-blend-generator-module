@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package generator;
 
+
+
 service GeneratorService{
   
  rpc Predict(PredictRequest) returns (PredictReply) {}
