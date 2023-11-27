@@ -14,15 +14,20 @@ class GeneratorServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Predict = channel.unary_unary(
-                '/generator.GeneratorService/Predict',
-                request_serializer=proto_dot_generator__pb2.PredictRequest.SerializeToString,
-                response_deserializer=proto_dot_generator__pb2.PredictReply.FromString,
-                )
         self.ScribblePredict = channel.unary_unary(
                 '/generator.GeneratorService/ScribblePredict',
                 request_serializer=proto_dot_generator__pb2.ScribblePredictRequest.SerializeToString,
                 response_deserializer=proto_dot_generator__pb2.ScribblePredictReply.FromString,
+                )
+        self.ScribblePredictInBackground = channel.unary_unary(
+                '/generator.GeneratorService/ScribblePredictInBackground',
+                request_serializer=proto_dot_generator__pb2.ScribblePredictRequest.SerializeToString,
+                response_deserializer=proto_dot_generator__pb2.ScribblePredictInBackgroundReply.FromString,
+                )
+        self.ScribblePredictStatus = channel.unary_unary(
+                '/generator.GeneratorService/ScribblePredictStatus',
+                request_serializer=proto_dot_generator__pb2.ScribblePredictInBackgroundReply.SerializeToString,
+                response_deserializer=proto_dot_generator__pb2.ScribblePredictStatusReply.FromString,
                 )
         self.CaptionPredict = channel.unary_unary(
                 '/generator.GeneratorService/CaptionPredict',
@@ -34,13 +39,19 @@ class GeneratorServiceStub(object):
 class GeneratorServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def Predict(self, request, context):
+    def ScribblePredict(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ScribblePredict(self, request, context):
+    def ScribblePredictInBackground(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ScribblePredictStatus(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -55,15 +66,20 @@ class GeneratorServiceServicer(object):
 
 def add_GeneratorServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Predict': grpc.unary_unary_rpc_method_handler(
-                    servicer.Predict,
-                    request_deserializer=proto_dot_generator__pb2.PredictRequest.FromString,
-                    response_serializer=proto_dot_generator__pb2.PredictReply.SerializeToString,
-            ),
             'ScribblePredict': grpc.unary_unary_rpc_method_handler(
                     servicer.ScribblePredict,
                     request_deserializer=proto_dot_generator__pb2.ScribblePredictRequest.FromString,
                     response_serializer=proto_dot_generator__pb2.ScribblePredictReply.SerializeToString,
+            ),
+            'ScribblePredictInBackground': grpc.unary_unary_rpc_method_handler(
+                    servicer.ScribblePredictInBackground,
+                    request_deserializer=proto_dot_generator__pb2.ScribblePredictRequest.FromString,
+                    response_serializer=proto_dot_generator__pb2.ScribblePredictInBackgroundReply.SerializeToString,
+            ),
+            'ScribblePredictStatus': grpc.unary_unary_rpc_method_handler(
+                    servicer.ScribblePredictStatus,
+                    request_deserializer=proto_dot_generator__pb2.ScribblePredictInBackgroundReply.FromString,
+                    response_serializer=proto_dot_generator__pb2.ScribblePredictStatusReply.SerializeToString,
             ),
             'CaptionPredict': grpc.unary_unary_rpc_method_handler(
                     servicer.CaptionPredict,
@@ -81,23 +97,6 @@ class GeneratorService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Predict(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/generator.GeneratorService/Predict',
-            proto_dot_generator__pb2.PredictRequest.SerializeToString,
-            proto_dot_generator__pb2.PredictReply.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
     def ScribblePredict(request,
             target,
             options=(),
@@ -111,6 +110,40 @@ class GeneratorService(object):
         return grpc.experimental.unary_unary(request, target, '/generator.GeneratorService/ScribblePredict',
             proto_dot_generator__pb2.ScribblePredictRequest.SerializeToString,
             proto_dot_generator__pb2.ScribblePredictReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ScribblePredictInBackground(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/generator.GeneratorService/ScribblePredictInBackground',
+            proto_dot_generator__pb2.ScribblePredictRequest.SerializeToString,
+            proto_dot_generator__pb2.ScribblePredictInBackgroundReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ScribblePredictStatus(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/generator.GeneratorService/ScribblePredictStatus',
+            proto_dot_generator__pb2.ScribblePredictInBackgroundReply.SerializeToString,
+            proto_dot_generator__pb2.ScribblePredictStatusReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

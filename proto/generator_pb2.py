@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15proto/generator.proto\x12\tgenerator\" \n\x0ePredictRequest\x12\x0e\n\x06prompt\x18\x01 \x01(\t\"\x1c\n\x0cPredictReply\x12\x0c\n\x04urls\x18\x01 \x03(\t\"J\n\x16ScribblePredictRequest\x12\x10\n\x08imageUrl\x18\x01 \x01(\t\x12\x13\n\x06prompt\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\t\n\x07_prompt\"#\n\x14ScribblePredictReply\x12\x0b\n\x03url\x18\x01 \x01(\t\")\n\x15\x43\x61ptionPredictRequest\x12\x10\n\x08imageUrl\x18\x01 \x01(\t\"&\n\x13\x43\x61ptionPredictReply\x12\x0f\n\x07\x63\x61ption\x18\x01 \x01(\t2\x82\x02\n\x10GeneratorService\x12?\n\x07Predict\x12\x19.generator.PredictRequest\x1a\x17.generator.PredictReply\"\x00\x12W\n\x0fScribblePredict\x12!.generator.ScribblePredictRequest\x1a\x1f.generator.ScribblePredictReply\"\x00\x12T\n\x0e\x43\x61ptionPredict\x12 .generator.CaptionPredictRequest\x1a\x1e.generator.CaptionPredictReply\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15proto/generator.proto\x12\tgenerator\" \n\x0ePredictRequest\x12\x0e\n\x06prompt\x18\x01 \x01(\t\"\x1c\n\x0cPredictReply\x12\x0c\n\x04urls\x18\x01 \x03(\t\"J\n\x16ScribblePredictRequest\x12\x10\n\x08imageUrl\x18\x01 \x01(\t\x12\x13\n\x06prompt\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\t\n\x07_prompt\"#\n\x14ScribblePredictReply\x12\x0b\n\x03url\x18\x01 \x01(\t\".\n ScribblePredictInBackgroundReply\x12\n\n\x02id\x18\x01 \x01(\t\"F\n\x1aScribblePredictStatusReply\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x10\n\x03url\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x06\n\x04_url\")\n\x15\x43\x61ptionPredictRequest\x12\x10\n\x08imageUrl\x18\x01 \x01(\t\"&\n\x13\x43\x61ptionPredictReply\x12\x0f\n\x07\x63\x61ption\x18\x01 \x01(\t2\xa1\x03\n\x10GeneratorService\x12W\n\x0fScribblePredict\x12!.generator.ScribblePredictRequest\x1a\x1f.generator.ScribblePredictReply\"\x00\x12o\n\x1bScribblePredictInBackground\x12!.generator.ScribblePredictRequest\x1a+.generator.ScribblePredictInBackgroundReply\"\x00\x12m\n\x15ScribblePredictStatus\x12+.generator.ScribblePredictInBackgroundReply\x1a%.generator.ScribblePredictStatusReply\"\x00\x12T\n\x0e\x43\x61ptionPredict\x12 .generator.CaptionPredictRequest\x1a\x1e.generator.CaptionPredictReply\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -29,10 +29,14 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_SCRIBBLEPREDICTREQUEST']._serialized_end=174
   _globals['_SCRIBBLEPREDICTREPLY']._serialized_start=176
   _globals['_SCRIBBLEPREDICTREPLY']._serialized_end=211
-  _globals['_CAPTIONPREDICTREQUEST']._serialized_start=213
-  _globals['_CAPTIONPREDICTREQUEST']._serialized_end=254
-  _globals['_CAPTIONPREDICTREPLY']._serialized_start=256
-  _globals['_CAPTIONPREDICTREPLY']._serialized_end=294
-  _globals['_GENERATORSERVICE']._serialized_start=297
-  _globals['_GENERATORSERVICE']._serialized_end=555
+  _globals['_SCRIBBLEPREDICTINBACKGROUNDREPLY']._serialized_start=213
+  _globals['_SCRIBBLEPREDICTINBACKGROUNDREPLY']._serialized_end=259
+  _globals['_SCRIBBLEPREDICTSTATUSREPLY']._serialized_start=261
+  _globals['_SCRIBBLEPREDICTSTATUSREPLY']._serialized_end=331
+  _globals['_CAPTIONPREDICTREQUEST']._serialized_start=333
+  _globals['_CAPTIONPREDICTREQUEST']._serialized_end=374
+  _globals['_CAPTIONPREDICTREPLY']._serialized_start=376
+  _globals['_CAPTIONPREDICTREPLY']._serialized_end=414
+  _globals['_GENERATORSERVICE']._serialized_start=417
+  _globals['_GENERATORSERVICE']._serialized_end=834
 # @@protoc_insertion_point(module_scope)
